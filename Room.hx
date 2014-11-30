@@ -3,7 +3,7 @@ package;
 extern class Room {
 	
 	public function find ( type : EntityType ) : Array<Entity>;
-	public function lookAt ( target : RoomPosition ) : Array<Entity>;
+	public function lookAt ( target : {x:Int, y:Int} ) : Array<LookResult>;
 	public function findPathTo (fromPos : RoomPosition, toPos : RoomPosition, ?opts : PathOptions) : Path;
 	public function makeSnapshot (?description : String) : Void;
 }
