@@ -19,11 +19,11 @@ extern class RoomPosition {
 	public function findPathTo (target : RoomPosition, ?opts : PathOptions) : Path;
 
 
-	public function findNearest ( type : EntityType, ?opts : PathOptions) : Entity;
+	private function findNearest ( type : EntityType, ?opts : PathOptions) : Entity;
 
 	public function findInRange ( type : EntityType, range : Float, ?opts : PathOptions ) : Array<Entity>;
 
 	@:overload(function(x : Int, y : Int): Bool{})
 	@:overload(function(target : Entity): Bool{})
 	public function equalsTo (target : RoomPosition) : Bool;
-} 
+}
