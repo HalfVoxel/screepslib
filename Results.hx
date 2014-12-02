@@ -1,7 +1,7 @@
 package;
 
 @:enum
-abstract AttackResult(Int) {
+abstract AttackResult(Int) to Int {
     var Ok = 0;
     var NotOwner = -1;
     var Busy = -4;
@@ -11,7 +11,7 @@ abstract AttackResult(Int) {
 }
 
 @:enum
-abstract MoveResult(Int) {
+abstract MoveResult(Int) to Int {
     var Ok = 0;
     var NotOwner = -1;
     var Busy = -4;
@@ -20,7 +20,21 @@ abstract MoveResult(Int) {
 }
 
 @:enum
-abstract PathResult(Int) {
+abstract CreateFlagResult(Int) to Int {
+    var Ok = 0;
+    var NameExists = -3;
+    var InvalidArgs = -10;
+}
+
+@:enum
+abstract CreateConstructionSiteResult(Int) to Int {
+    var Ok = 0;
+    var InvalidTarget = -7;
+    var InvalidArgs = -10;
+}
+
+@:enum
+abstract PathResult(Int) to Int {
     var Ok = 0;
     var NotOwner = -1;
     var Busy = -4;
@@ -31,7 +45,7 @@ abstract PathResult(Int) {
 }
 
 @:enum
-abstract ActionResult(Int) {
+abstract ActionResult(Int) to Int {
     var Ok = 0;
     var NotOwner = -1;
     var Busy = -4;
@@ -41,7 +55,7 @@ abstract ActionResult(Int) {
 }
 
 @:enum
-abstract SpawnError(Int) {
+abstract SpawnError(Int) to Int {
     var NotOwner = -1;
     var NameExists = -3;
     var Busy = -4;
@@ -51,7 +65,7 @@ abstract SpawnError(Int) {
 }
 
 @:enum
-abstract EnergyActionResult(Int) {
+abstract EnergyActionResult(Int) to Int {
     var Ok = 0;
     var NotOwner = -1;
     var Busy = -4;
@@ -62,7 +76,7 @@ abstract EnergyActionResult(Int) {
 }
 
 @:enum
-abstract PickupResult(Int) {
+abstract PickupResult(Int) to Int {
     var Ok = 0;
     var NotOwner = -1;
     var Busy = -4;
@@ -73,7 +87,7 @@ abstract PickupResult(Int) {
 }
 
 @:enum
-abstract TransferResult(Int) {
+abstract TransferResult(Int) to Int {
     var Ok = 0;
     var NotOwner = -1;
     var Busy = -4;
@@ -84,9 +98,16 @@ abstract TransferResult(Int) {
 }
 
 @:enum
-abstract EnergyResult(Int) {
+abstract EnergyResult(Int) to Int {
     var Ok = 0;
     var NotOwner = -1;
     var Busy = -4;
     var NotEnoughEnergy = -6;
+}
+
+@:enum
+abstract SuicideResult(Int) to Int {
+    var Ok = 0;
+    var NotOwner = -1;
+    var Busy = -4;
 }

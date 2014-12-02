@@ -2,6 +2,7 @@ using haxe.ds.Option;
 
 @:access(RoomPosition)
 class SCExtenders {
+
 	public static function findClosest ( obj : RoomPosition, type : EntityType, ?opts : PathOptions) : Option<Entity> {
 		var v = obj.findNearest (type, opts);
 		return v != null ? Some(v) : None;

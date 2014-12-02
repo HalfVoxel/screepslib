@@ -1,10 +1,24 @@
 package;
 
+using Results;
+
+typedef Position = {x:Int, y:Int};
+
 extern class Room {
 	
 	public function find ( type : EntityType ) : Array<Entity>;
 	public function lookAt ( target : {x:Int, y:Int} ) : Array<LookResult>;
-	public function findPathTo (fromPos : RoomPosition, toPos : RoomPosition, ?opts : PathOptions) : Path;
+	public function findPathTo (fromPos : Position, toPos : Position, ?opts : PathOptions) : Path;
+	public function getPositionAt (x : Int, y : Int) : RoomPosition;
+
+	@:overload(function(pos : Entity, ?name : String): CreateFlagResult{})
+	@:overload(function(pos : Position, ?name : String): CreateFlagResult{})
+	public function createFlag ( x : Int, y : Int, ?name : String) : CreateFlagResult;
+
+	@:overload(function(pos : Entity, type : StructureType): CreateConstructionSiteResult{})
+	@:overload(function(pos : Position, type : StructureType): CreateConstructionSiteResult{})
+	public function createConstructionSite ( x : Int, y : Int, type : StructureType) : CreateConstructionSiteResult;
+
 	public function makeSnapshot (?description : String) : Void;
 }
 
