@@ -16,7 +16,6 @@ extern class Creep extends HPEntity {
 	public var ticksToLive : Int;
 	public var fatigue : Int;
 
-	@:overload(function(target : Spawn): AttackResult{})
 	@:overload(function(target : Structure): AttackResult{})
 	public function attack(target : Creep) : AttackResult;
 
