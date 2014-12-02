@@ -56,3 +56,12 @@ for (creep in Game.creeps) {
 	}
 }
 ```
+
+You need to make sure you add -cp screepslib to your compile command, otherwise
+Haxe will not find the source files.
+This is what I use:
+```Shell
+haxe -cp screepslib -main Screeps -js out.js && pbcopy < out.js
+```
+The pbcopy part (osx only) copies the output to my clipboard so that
+I can just run the command and then switch to a browser and paste the result into the Screeps editor.
