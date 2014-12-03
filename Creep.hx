@@ -37,7 +37,7 @@ extern class Creep extends HPEntity {
 	public function move ( direction : Direction ) : MoveResult;
 
 	@:overload(function(target : Entity, ?opts : PathOptions): PathResult{})
-	@:overload(function(target : RoomPosition, ?opts : PathOptions): PathResult{})
+	@:overload(function(target : {x:Int, y:Int}, ?opts : PathOptions): PathResult{})
 	public function moveTo ( x : Int, y : Int, ?opts : PathOptions) : PathResult;
 
 	public function pickup (target : Energy) : PickupResult;

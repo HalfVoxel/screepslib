@@ -16,7 +16,7 @@ extern class RoomPosition {
 
 	@:overload(function(x : Int, y : Int): Path{})
 	@:overload(function(target : Entity, ?opts : PathOptions): Path{})
-	public function findPathTo (target : RoomPosition, ?opts : PathOptions) : Path;
+	public function findPathTo (target : {x:Int, y:Int}, ?opts : PathOptions) : Path;
 
 
 	private function findNearest ( type : EntityType, ?opts : PathOptions) : Entity;
