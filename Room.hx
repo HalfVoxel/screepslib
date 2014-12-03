@@ -6,6 +6,9 @@ typedef Position = {x:Int, y:Int};
 
 extern class Room {
 	
+	public static inline var Width = 50;
+	public static inline var Height = 50;
+
 	public function find ( type : EntityType ) : Array<Entity>;
 	public function lookAt ( target : {x:Int, y:Int} ) : Array<LookResult>;
 	public function findPathTo (fromPos : Position, toPos : Position, ?opts : PathOptions) : Path;
