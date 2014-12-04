@@ -26,4 +26,8 @@ extern class RoomPosition {
 	@:overload(function(x : Int, y : Int): Bool{})
 	@:overload(function(target : Entity): Bool{})
 	public function equalsTo (target : RoomPosition) : Bool;
+
+	public static inline function squaredDistance (a : {x:Int,y:Int}, b : {x:Int,y:Int}) : Int {
+		return (a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y);
+	}
 }
