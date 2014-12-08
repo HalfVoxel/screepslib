@@ -5,6 +5,8 @@ extern class Spawn extends Structure {
 	public var spawning : SpawnProgress;
 
 	private function createCreep (body : Array<BodyPart>, ?name : String, ?memory : Dynamic) : Dynamic;
+
+	public function transferEnergy (target : Creep, ?amount: Int) : TransferResult;
 }
 
 @:access(Spawn)

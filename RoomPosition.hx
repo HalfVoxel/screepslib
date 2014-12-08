@@ -30,4 +30,12 @@ extern class RoomPosition {
 	public static inline function squaredDistance (a : {x:Int,y:Int}, b : {x:Int,y:Int}) : Int {
 		return (a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y);
 	}
+
+	public static inline function manhattanDistance (a : {x:Int,y:Int}, b : {x:Int,y:Int}) : Int {
+		return Std.int (Math.abs(a.x-b.x)) + Std.int (Math.abs(a.y-b.y));
+	}
+
+	public static inline function chebyshevDistance (a : {x:Int,y:Int}, b : {x:Int,y:Int}) : Int {
+		return Std.int (Math.max (Math.abs(a.x-b.x), Math.abs(a.y-b.y)));
+	}
 }
