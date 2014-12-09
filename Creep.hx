@@ -47,8 +47,8 @@ extern class Creep extends HPEntity {
 
 	public function suicide () : SuicideResult;
 	
-	@:overload(function(target : Spawn): TransferResult{})
-	@:overload(function(target : Structure): TransferResult{})
+	@:overload(function(target : Spawn, ?amount: Int): TransferResult{})
+	@:overload(function(target : Structure, ?amount: Int): TransferResult{})
 	public function transferEnergy (target : Creep, ?amount: Int) : TransferResult;
 
 	public function new (){}
