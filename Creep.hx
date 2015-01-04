@@ -34,6 +34,8 @@ extern class Creep extends HPEntity {
 
 	public function heal ( target : Creep ) : ActionResult;
 
+	public function rangedHeal ( target : Creep ) : AttackResult;
+
 	public function move ( direction : Direction ) : MoveResult;
 
 	@:overload(function(target : Entity, ?opts : PathOptions): PathResult{})

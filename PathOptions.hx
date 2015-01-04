@@ -3,5 +3,6 @@ typedef PathOptions = {
 	?ignoreCreeps : Bool,
 	?ignoreDestructibleStructures : Bool,
 	?withRampartsOnly : Bool,
-	?heuristicWeight : Float
+	?heuristicWeight : Float,
+	?algorithm : PathfindingAlgorithm
 }

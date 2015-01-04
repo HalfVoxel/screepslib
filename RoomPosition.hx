@@ -19,7 +19,7 @@ extern class RoomPosition {
 	public function findPathTo (target : {x:Int, y:Int}, ?opts : PathOptions) : Path;
 
 
-	private function findNearest ( type : EntityType, ?opts : PathOptions) : Entity;
+	private function findClosest ( type : EntityType, ?opts : PathOptions) : Entity;
 
 	public function findInRange ( type : EntityType, range : Float, ?opts : PathOptions ) : Array<Entity>;
 

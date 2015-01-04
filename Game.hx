@@ -1,6 +1,6 @@
 package;
 
-using haxe.ds.Option;
+import maybe.Maybe;
 
 extern class Game {
 	public static var creeps : DynamicObject<Creep>;
@@ -9,12 +9,7 @@ extern class Game {
     public static var structures : DynamicObject<Structure>;
     public static var time : Int;
 
-    private static function getRoom ( name : String ) : Room;
+    public static function getRoom ( name : String ) : Maybe<Room>;
    	public static function notify ( message : String ) : Void;
-   	public static function getObjectById ( id : String ) : Entity;
-   	
-    public static inline function getRoomByName ( name : String ) : Option<Room> {
-		var v = getRoom(name);
-		return v != null ? Some(v) : None;
-	}
+   	public static function getObjectById ( id : String ) : Maybe<Entity>;
 }

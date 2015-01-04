@@ -1,30 +1,26 @@
 using haxe.ds.Option;
+import maybe.Maybe;
 
 @:access(RoomPosition)
 class SCExtenders {
 
-	public static function findClosest ( obj : RoomPosition, type : EntityType, ?opts : PathOptions) : Option<Entity> {
-		var v = obj.findNearest (type, opts);
-		return v != null ? Some(v) : None;
+	public static function findClosestDroppedEnergy ( obj : RoomPosition, ?opts : PathOptions) : Maybe<Energy> {
+		var v : Energy = cast obj.findClosest (DroppedEnergy, opts);
+		return v;
 	}
 
-	public static function findClosestDroppedEnergy ( obj : RoomPosition, ?opts : PathOptions) : Option<Energy> {
-		var v : Energy = cast obj.findNearest (DroppedEnergy, opts);
-		return v != null ? Some(v) : None;
+	public static function findClosestActiveSource ( obj : RoomPosition, ?opts : PathOptions) : Maybe<Source> {
+		var v : Source = cast obj.findClosest (SourcesActive, opts);
+		return v;
 	}
 
-	public static function findClosestActiveSource ( obj : RoomPosition, ?opts : PathOptions) : Option<Source> {
-		var v : Source = cast obj.findNearest (SourcesActive, opts);
-		return v != null ? Some(v) : None;
+	public static function findClosestFriendlySpawn ( obj : RoomPosition, ?opts : PathOptions) : Maybe<Spawn> {
+		var v : Spawn = cast obj.findClosest (MySpawns, opts);
+		return v;
 	}
 
-	public static function findClosestFriendlySpawn ( obj : RoomPosition, ?opts : PathOptions) : Option<Spawn> {
-		var v : Spawn = cast obj.findNearest (MySpawns, opts);
-		return v != null ? Some(v) : None;
-	}
-
-	public static function findClosestHostileCreep ( obj : RoomPosition, ?opts : PathOptions) : Option<Creep> {
-		var v : Creep = cast obj.findNearest (HostileCreeps, opts);
-		return v != null ? Some(v) : None;
+	public static function findClosestHostileCreep ( obj : RoomPosition, ?opts : PathOptions) : Maybe<Creep> {
+		var v : Creep = cast obj.findClosest (HostileCreeps, opts);
+		return v;
 	}
 }

@@ -9,12 +9,11 @@ not even there watching it, thus allowing enemies to crush your 'empire'.
 It also creates a good inheritance structure for Screeps entities (game objects) to allow
 you to more easily work with them in a typesafe way.
 
-Some extern calls are deliberately made private and only exposed through wrapper functions.
-These are especially those which return an object or null (like RoomPosition.findNearest). The wrappers
-usually change that to return an Option which forces you to check if it is null or not as not
+Some call which return either an object or null have had their return types changed to Maybe<T>.
+For example RoomPosition.findClosest. Changing it to Maybe<T> forces you to check if it is null or not as not
 properly handling null objects can throw exceptions (see note above).
-But of course, if you really want to use those unsafe calls, you can use the Haxe @:access(SomeClass) meta to
-gain access to all unsafe methods.
+But of course, if you really want to ignore all that safe stuff, there is a method called extract on the Maybe
+object which returns the underlaying object.
 
 Usage
 =====
@@ -36,7 +35,7 @@ spawn.createCreep([Move,Work,Carry], "Worker1");
 ```Haxe
 for (creep in Game.creeps) {
 	switch (creep.pos.findClosest(DroppedEnergy)) {
-	case Some(entity):
+	case Some(entity.option):
 		creep.moveTo(entity);
 	case None:
 	}
@@ -46,16 +45,37 @@ for (creep in Game.creeps) {
 ```Haxe
 for (creep in Game.creeps) {
 	// typesafe variant of creep.pos.findClosest(...)
-	// it returns Option<Creep> instead of Option<Entity>
+	// it returns Maybe<Creep> instead of Maybe<Entity>
 	// which means we can attack it (we can only attack Structures and Creeps)
 	switch (creep.pos.findClosestHostileCreep()) {
-	case Some(enemy):
+	case Some(enemy.option):
 		creep.moveTo(enemy);
 		creep.attack(enemy);
 	case None:
 	}
 }
 ```
+
+The below is an alternative version which uses a macro called @extract instead of a switch.
+It slightly cleaner (and probably faster, but you never know with JITs) code.
+In order to be able to use that you need to add
+```Haxe
+@:build(maybe.Extract.build())
+```
+right before your class declaration.
+
+```Haxe
+for (creep in Game.creeps) {
+	// typesafe variant of creep.pos.findClosest(...)
+	// it returns Maybe<Creep> instead of Maybe<Entity>
+	// which means we can attack it (we can only attack Structures and Creeps)
+	@extract(creep.pos.findClosestHostileCreep() => enemy) {
+		creep.moveTo(enemy);
+		creep.attack(enemy);
+	}
+}
+```
+
 
 You need to make sure you add -cp screepslib to your compile command, otherwise
 Haxe will not find the source files.
