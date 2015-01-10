@@ -4,11 +4,11 @@ using Results;
 
 extern class Creep extends HPEntity {
 	/*public var id : String;
-	public var name : String;
 	public var owner : String;
 	public var room : Room;
 	public var pos : RoomPosition;
 	public var my : Bool;*/
+	public var name : String;
 	public var memory : Dynamic;	
 	public var body : Array<BodyPart>;
 	public var energy : Int;
@@ -22,6 +22,10 @@ extern class Creep extends HPEntity {
 	@:overload(function(target : Spawn): AttackResult{})
 	@:overload(function(target : Structure): AttackResult{})
 	public function rangedAttack (target : Creep) : AttackResult;
+
+	public function rangedMassAttack () : MassAttackResult;
+
+	public function say ( message : String ) : SayResult;
 
 	public function build(target : ConstructionSite) : EnergyActionResult;
 

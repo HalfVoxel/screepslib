@@ -11,6 +11,14 @@ abstract AttackResult(Int) to Int {
 }
 
 @:enum
+abstract MassAttackResult(Int) to Int {
+    var Ok = 0;
+    var NotOwner = -1;
+    var Busy = -4;
+    var NoBodyPart = -12;
+}
+
+@:enum
 abstract MoveResult(Int) to Int {
     var Ok = 0;
     var NotOwner = -1;
@@ -23,6 +31,14 @@ abstract MoveResult(Int) to Int {
 abstract CreateFlagResult(Int) to Int {
     var Ok = 0;
     var NameExists = -3;
+    var InvalidArgs = -10;
+}
+
+@:enum
+abstract SayResult(Int) to Int {
+    var Ok = 0;
+    var NotOwner = -1;
+    var Busy = -4;
     var InvalidArgs = -10;
 }
 

@@ -4,5 +4,6 @@ typedef PathOptions = {
 	?ignoreDestructibleStructures : Bool,
 	?withRampartsOnly : Bool,
 	?heuristicWeight : Float,
-	?algorithm : PathfindingAlgorithm
+	?algorithm : PathfindingAlgorithm,
+	?reusePath : Int
 }
