@@ -9,6 +9,8 @@ extern class Room {
 	public static inline var Width = 50;
 	public static inline var Height = 50;
 
+	public var mode (default, null) : RoomMode;
+
 	public function find ( type : EntityType ) : Array<Entity>;
 	public function lookAt ( target : {x:Int, y:Int} ) : Array<LookResult>;
 	public function lookAtArea ( top : Int, left : Int, bottom : Int, right : Int ) : Array< Array< Array<LookResult> > >;
