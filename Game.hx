@@ -13,6 +13,10 @@ extern class Game {
 
 	@:deprecated
 	public static inline function getRoom ( name : String ) : Maybe<Room> {
+		return getFirstRoom ();
+	}
+
+	public static inline function getFirstRoom () : Room {
 		var res = null;
 		for (room in Game.rooms) {
 			res = room;

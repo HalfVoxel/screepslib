@@ -10,12 +10,13 @@ extern class Room {
 	public static inline var Height = 50;
 
 	public var mode (default, null) : RoomMode;
-
+	public var name (default, null) : String;
+	
 	public function find ( type : EntityType ) : Array<Entity>;
 	public function lookAt ( target : {x:Int, y:Int} ) : Array<LookResult>;
 	public function lookAtArea ( top : Int, left : Int, bottom : Int, right : Int ) : Array< Array< Array<LookResult> > >;
 
-	public function findPathTo (fromPos : Position, toPos : Position, ?opts : PathOptions) : Path;
+	public function findPath (fromPos : Position, toPos : Position, ?opts : PathOptions) : Path;
 	public function getPositionAt (x : Int, y : Int) : RoomPosition;
 
 	@:overload(function(pos : Entity, ?name : String, ?color : Color): CreateFlagResult{})
