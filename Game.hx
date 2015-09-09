@@ -20,6 +20,7 @@ extern class Game {
 		var res = null;
 		for (room in Game.rooms) {
 			res = room;
+			break;
 		}
 		return res;
 	}
