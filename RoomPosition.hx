@@ -18,8 +18,12 @@ extern class RoomPosition {
 	@:overload(function(target : Entity, ?opts : PathOptions): Path{})
 	public function findPathTo (target : {x:Int, y:Int}, ?opts : PathOptions) : Path;
 
+	@:deprecated
+	private function findClosest (type : EntityType, ?opts : PathOptions) : Entity;
 
-	private function findClosest ( type : EntityType, ?opts : PathOptions) : Entity;
+	private function findClosestByPath (type : EntityType, ?opts : PathOptions) : Entity;
+
+	private function findClosestByRange (type : EntityType) : Entity;
 
 	public function findInRange ( type : EntityType, range : Float, ?opts : PathOptions ) : Array<Entity>;
 
